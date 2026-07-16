@@ -6,6 +6,7 @@ mkdir -p "${BROWSER_PROFILE_DIR:-/data/browser-data}"
 
 Xvfb "$DISPLAY" -screen 0 1280x900x24 -ac +extension GLX +render -noreset &
 sleep 1
+setxkbmap "${KEYBOARD_LAYOUT:-br}" || true
 fluxbox >/tmp/fluxbox.log 2>&1 &
 
 case "${APP_MODE:-worker}" in

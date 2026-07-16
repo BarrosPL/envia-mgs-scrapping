@@ -8,7 +8,7 @@ ENV PYTHONUNBUFFERED=1 \
 
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-       fluxbox novnc python3.12-venv websockify x11vnc xvfb \
+       fluxbox novnc python3.12-venv websockify x11vnc x11-xkb-utils xvfb \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
