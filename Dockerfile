@@ -1,0 +1,21 @@
+FROM mcr.microsoft.com/playwright/python:v1.52.0-noble
+
+ENV PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1 \
+    BROWSER_PROFILE_DIR=/data/browser-data \
+    TZ=America/Sao_Paulo
+
+RUN apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+       fluxbox novnc websockify x11vnc xvfb \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+COPY requirements.txt ./
+RUN pip install -r requirements.txt
+COPY . .
+RUN chmod +x /app/docker-entrypoint.sh && mkdir -p /data/browser-data
+
+EXPOSE 6080
+VOLUME ["/data"]
+ENTRYPOINT ["/app/docker-entrypoint.sh"]

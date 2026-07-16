@@ -1,0 +1,10 @@
+.git
+.agents
+.venv
+__pycache__
+.pytest_cache
+.env
+browser-data
+envios.csv
+Leads.xlsx
+*.pyc

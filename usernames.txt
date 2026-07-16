@@ -1,0 +1,4 @@
+# Um username por linha. O @ e linhas repetidas são aceitos.
+# exemplo_loja
+barros3510
+
